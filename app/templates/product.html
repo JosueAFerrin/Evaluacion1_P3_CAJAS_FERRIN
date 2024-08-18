@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>{{ legend }}</h2>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.name.label }}
+            {{ form.name(size=32) }}
+        </div>
+        <div>
+            {{ form.price.label }}
+            {{ form.price() }}
+        </div>
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+{% endblock %}

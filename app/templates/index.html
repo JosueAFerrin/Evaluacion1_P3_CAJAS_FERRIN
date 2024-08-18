@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Products</h1>
+    <ul>
+        {% for product in products %}
+            <li>{{ product.name }} - ${{ product.price }}
+                {% if current_user.is_authenticated and product.author == current_user %}
+                    <a href="{{ url_for('main.update_product', product_id=product.id) }}">Edit</a>
+                    <form action="{{ url_for('main.delete_product', product_id=product.id) }}" method="POST" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('main.api_data') }}">View API Data</a>
+{% endblock %}
